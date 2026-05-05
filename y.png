@@ -1,39 +1,39 @@
-# 最后更新时间: 2026-05-04 04:48
+# 最后更新时间: 2026-05-05 04:23
 
 央视频道,#genre#
 CCTV-1,http://221.7.175.154:8445/tsfile/live/1000_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-1,http://39.165.150.207:19901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-1,http://113.65.162.30:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-1,http://36.136.11.222:18885/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-1,http://120.226.246.71:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-1,http://113.65.162.30:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-2,http://221.7.175.154:8445/tsfile/live/1001_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-2,http://39.165.150.207:19901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-2,http://113.65.162.30:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-2,http://36.136.11.222:18885/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-2,http://120.226.246.71:9901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-2,http://113.65.162.30:9901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-3,http://221.7.175.154:8445/tsfile/live/1002_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-3,http://39.165.150.207:19901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-3,http://113.65.162.30:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-3,http://36.136.11.222:18885/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-3,http://120.226.246.71:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-3,http://113.65.162.30:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-4,http://221.7.175.154:8445/tsfile/live/1003_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-4,http://39.165.150.207:19901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-4,http://113.65.162.30:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-4,http://36.136.11.222:18885/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-4,http://120.226.246.71:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-4,http://113.65.162.30:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-5,http://221.7.175.154:8445/tsfile/live/0113_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5+,http://221.7.175.154:8445/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-5,http://39.165.150.207:19901/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-5,http://113.65.162.30:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-5,http://36.136.11.222:18885/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5+,http://39.165.150.207:19901/tsfile/live/0127_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5+,http://36.136.11.222:18885/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-5,http://120.226.246.71:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-5,http://113.65.162.30:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-6,http://221.7.175.154:8445/tsfile/live/1004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-6,http://39.165.150.207:19901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-6,http://36.136.11.222:18885/tsfile/live/faacts/0006_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-6,http://113.65.162.30:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-6,http://120.226.246.71:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-6,http://113.65.162.30:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-7,http://221.7.175.154:8445/tsfile/live/1005_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-7,http://39.165.150.207:19901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-7,http://36.136.11.222:18885/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
