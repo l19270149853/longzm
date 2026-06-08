@@ -1,23 +1,23 @@
-# 最后更新时间: 2026-06-07 05:52
+# 最后更新时间: 2026-06-08 06:05
 
 央视频道,#genre#
-CCTV-1,http://120.226.246.71:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-1,http://39.165.150.207:19901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-2,http://120.226.246.71:9901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-1,http://120.226.246.71:9901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-2,http://39.165.150.207:19901/tsfile/live/0002_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-3,http://120.226.246.71:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-2,http://120.226.246.71:9901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-3,http://39.165.150.207:19901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-4,http://120.226.246.71:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-3,http://120.226.246.71:9901/tsfile/live/0003_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-4,http://39.165.150.207:19901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-5,http://120.226.246.71:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-4,http://120.226.246.71:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-5,http://39.165.150.207:19901/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&authid=0
+CCTV-5,http://120.226.246.71:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV5+,http://39.165.150.207:19901/tsfile/live/0127_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-6,http://120.226.246.71:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-6,http://39.165.150.207:19901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-7,http://120.226.246.71:9901/tsfile/live/0007_2.m3u8?key=txiptv&playlive=1&down=1
+CCTV-6,http://120.226.246.71:9901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-7,http://39.165.150.207:19901/tsfile/live/0007_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV-8,http://120.226.246.71:9901/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&down=1
+CCTV-7,http://120.226.246.71:9901/tsfile/live/0007_2.m3u8?key=txiptv&playlive=1&down=1
 CCTV-8,http://39.165.150.207:19901/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&authid=0
+CCTV-8,http://120.226.246.71:9901/tsfile/live/0008_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-9,http://39.165.150.207:19901/tsfile/live/0009_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-10,http://39.165.150.207:19901/tsfile/live/0010_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-11,http://39.165.150.207:19901/tsfile/live/0011_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -63,14 +63,8 @@ CCTV-13,http://39.165.150.207:19901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=
 优漫卡通,http://39.165.150.207:19901/tsfile/live/1019_1.m3u8?key=txiptv&playlive=1&authid=0
 信阳综合,http://39.165.150.207:19901/tsfile/live/1016_1.m3u8?key=txiptv&playlive=1&authid=0
 北京卡通,http://39.165.150.207:19901/tsfile/live/1013_1.m3u8?key=txiptv&playlive=1&authid=0
-南宁影视 高清,http://36.136.11.222:18885/tsfile/live/1126_1.m3u8?key=txiptv&playlive=1&authid=0
-南宁生活 高清,http://36.136.11.222:18885/tsfile/live/1127_1.m3u8?key=txiptv&playlive=1&authid=0
 嘉佳卡通,http://39.165.150.207:19901/tsfile/live/1023_1.m3u8?key=txiptv&playlive=1&authid=0
 国学频道,http://39.165.150.207:19901/tsfile/live/1025_1.m3u8?key=txiptv&playlive=1&authid=0
-央视新闻回放,http://36.136.11.222:18885/tsfile/live/1046_1.m3u8?key=txiptv&playlive=1&authid=0
-岭南戏曲,http://36.136.11.222:18885/tsfile/live/1137_1.m3u8?key=txiptv&playlive=1&authid=0
-广东少儿,http://36.136.11.222:18885/tsfile/live/1136_1.m3u8?key=txiptv&playlive=1&authid=0
-广东科教,http://36.136.11.222:18885/tsfile/live/1135_1.m3u8?key=txiptv&playlive=1&authid=0
 文物频道,http://39.165.150.207:19901/tsfile/live/1010_1.m3u8?key=txiptv&playlive=1&authid=0
 新动漫,http://120.226.246.71:9901/tsfile/live/1025_1.m3u8?key=txiptv&playlive=1&down=1
 梨园频道,http://39.165.150.207:19901/tsfile/live/1011_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -86,7 +80,6 @@ CCTV-13,http://39.165.150.207:19901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=
 法制天地,http://39.165.150.207:19901/tsfile/live/1026_1.m3u8?key=txiptv&playlive=1&authid=0
 湖南教育,http://120.226.246.71:9901/tsfile/live/1018_1.m3u8?key=txiptv&playlive=1&down=1
 炫动卡通,http://39.165.150.207:19901/tsfile/live/1014_1.m3u8?key=txiptv&playlive=1&authid=0
-珠江台,http://36.136.11.222:18885/tsfile/live/1138_1.m3u8?key=txiptv&playlive=1&authid=0
 百姓调解,http://39.165.150.207:19901/tsfile/live/1015_1.m3u8?key=txiptv&playlive=1&authid=0
 福建东南,http://39.165.150.207:19901/tsfile/live/1017_1.m3u8?key=txiptv&playlive=1&authid=0
 科教频道,http://39.165.150.207:19901/tsfile/live/1022_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -98,5 +91,4 @@ CCTV-13,http://39.165.150.207:19901/tsfile/live/0013_1.m3u8?key=txiptv&playlive=
 郑州文体频道,http://39.165.150.207:19901/tsfile/live/1050_1.m3u8?key=txiptv&playlive=1&authid=0
 郑州新闻综合,http://39.165.150.207:19901/tsfile/live/1048_1.m3u8?key=txiptv&playlive=1&authid=0
 郑州都市频道,http://39.165.150.207:19901/tsfile/live/1053_1.m3u8?key=txiptv&playlive=1&authid=0
-重温经典 高清,http://36.136.11.222:18885/tsfile/live/1034_1.m3u8?key=txiptv&playlive=1&authid=0
 金鹰卡通,http://39.165.150.207:19901/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0
