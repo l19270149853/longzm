@@ -1,4 +1,4 @@
-# 最后更新时间: 2026-07-01 05:50
+# 最后更新时间: 2026-07-02 05:09
 
 央视频道,#genre#
 CCTV-1,http://39.165.150.207:19901/tsfile/live/0001_1.m3u8?key=txiptv&playlive=1&authid=0
@@ -14,9 +14,9 @@ CCTV-4,http://39.165.150.207:19901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1
 CCTV-4,http://36.136.11.222:18885/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-4,http://120.226.246.71:9901/tsfile/live/0004_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-5,http://39.165.150.207:19901/tsfile/live/1028_1.m3u8?key=txiptv&playlive=1&authid=0
+CCTV5+,http://39.165.150.207:19901/tsfile/live/0127_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-5,http://36.136.11.222:18885/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV5+,http://36.136.11.222:18885/tsfile/live/1020_1.m3u8?key=txiptv&playlive=1&authid=0
-CCTV5+,http://39.165.150.207:19901/tsfile/live/0127_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-5,http://120.226.246.71:9901/tsfile/live/0005_1.m3u8?key=txiptv&playlive=1&down=1
 CCTV-6,http://39.165.150.207:19901/tsfile/live/0006_1.m3u8?key=txiptv&playlive=1&authid=0
 CCTV-6,http://36.136.11.222:18885/tsfile/live/faacts/0006_1.m3u8?key=txiptv&playlive=1&authid=0
