@@ -11,7 +11,7 @@ from urllib3.util.retry import Retry
 # 增强版配置参数
 # ======================
 MAX_WORKERS = 15  # 提升并发数
-SPEED_THRESHOLD = 0.2 # 提高速度阈值
+SPEED_THRESHOLD = 0.2 # 只判死活: 机器在美国, 测速不代表国内播放速度, 能出数据即有效
 REQUEST_TIMEOUT = 20  # 延长超时时间
 USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 RETRY_STRATEGY = Retry(
@@ -47,11 +47,9 @@ class IPTVUpdater:
         try:
             if not raw_url.startswith(('http://', 'https://')):
                 raw_url = f'http://{raw_url.strip("/")}'
-            
             parsed = urlparse(raw_url)
             if parsed.path.endswith('.m3u') or parsed.path.endswith('.txt'):
                 return raw_url  # 保留原始播放列表URL
-            
             return urlunparse((
                 parsed.scheme,
                 parsed.netloc,
@@ -71,11 +69,8 @@ class IPTVUpdater:
                 print(f"\n▷ 正在抓取源: {source}")
                 response = self.session.get(source, timeout=REQUEST_TIMEOUT)
                 response.raise_for_status()
-                
-                # 增强版URL正则匹配
                 url_pattern = r"(?:https?:\/\/)?(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*)"
                 matches = re.findall(url_pattern, response.text)
-                
                 print(f"发现原始URL数量: {len(matches)}")
                 for url in matches:
                     if any(x in url for x in ['github.com', 'raw.githubusercontent.com']):
@@ -92,15 +87,12 @@ class IPTVUpdater:
             start_time = time.time()
             with self.session.get(url, stream=True, timeout=(5, 15)) as response:
                 response.raise_for_status()
-                
-                # 测试前1MB数据
                 target_size = 1024 * 1024
                 downloaded = 0
                 for chunk in response.iter_content(chunk_size=8192):
                     downloaded += len(chunk)
                     if downloaded >= target_size or time.time() - start_time > 20:
                         break
-                
                 duration = max(time.time() - start_time, 0.1)
                 speed = (downloaded / 1024) / duration
                 return round(speed, 2)
@@ -113,7 +105,6 @@ class IPTVUpdater:
         try:
             response = self.session.get(api_url, timeout=REQUEST_TIMEOUT)
             response.raise_for_status()
-            
             try:
                 data = response.json()
                 if not isinstance(data.get('data'), list):
@@ -122,13 +113,11 @@ class IPTVUpdater:
             except ValueError:
                 print(f"⚠ JSON解析失败: {api_url}")
                 return
-
             with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
                 futures = []
-                for idx, channel in enumerate(data['data'][:200]):  # 限制每个API最多处理200个频道
+                for idx, channel in enumerate(data['data']):  # 不设上限, 扫到多少处理多少
                     if not all(k in channel for k in ('name', 'url')):
                         continue
-                    
                     try:
                         full_url = urljoin(api_url, channel['url'].strip())
                         unique_key = f"{channel['name'].strip()}|{full_url}"
@@ -140,7 +129,6 @@ class IPTVUpdater:
                             ))
                     except Exception as e:
                         print(f"⚠ 频道处理异常: {str(e)}")
-                
                 for name, url, future in futures:
                     speed = future.result()
                     if speed > SPEED_THRESHOLD:
@@ -148,14 +136,13 @@ class IPTVUpdater:
                         print(f"✔ {name.ljust(20)} {speed} KB/s")
                     else:
                         print(f"✘ {name.ljust(20)} 速度不足 {speed} KB/s")
-
         except requests.exceptions.RequestException as e:
             print(f"⚠ 请求失败: {str(e)}")
         except Exception as e:
             print(f"⚠ 处理异常: {str(e)}")
 
     def _save_channels(self):
-        # 同名归一去重: 每台只留测速最快的 2 条线路
+        # 同名归一后全部保留: 扫到多少条留多少条, 只按测速排序(快的在前), 同址去重
         by_name = {}
         for name, url, speed in self.channel_dict.values():
             cn = clean_name(name)
@@ -165,15 +152,23 @@ class IPTVUpdater:
         grouped = {g: [] for g in GROUPS}
         total = 0
         for cn, lines in by_name.items():
-            total += min(len(lines), 2)
-        for cn, lines in by_name.items():
             lines.sort(key=lambda x: -x[0])
-            for _sp, url in lines[:2]:
-                grouped[classify(cn)].append(f"{cn},{url}")
-        grouped['央视'].sort(key=lambda l: _cctv_key(l.split(',', 1)[0]))
-        grouped['卫视'].sort(key=lambda l: _sat_key(l.split(',', 1)[0]))
-        for g in GROUPS[2:]:
-            grouped[g] = sorted(set(grouped[g]))
+            seen = set()
+            urls = []
+            for _sp, url in lines:
+                if url not in seen:
+                    seen.add(url)
+                    urls.append(url)
+            total += len(urls)
+            grouped[classify(cn)].append((cn, urls))
+
+        def _order(g, item):
+            cn = item[0]
+            if g == '央视':
+                return _cctv_key(cn)
+            if g == '卫视':
+                return _sat_key(cn)
+            return (0, cn)
 
         try:
             with open("y.png", "w", encoding="utf-8") as f:
@@ -182,8 +177,11 @@ class IPTVUpdater:
                     if not grouped[g]:
                         continue
                     f.write(f"{g},#genre#\n")
-                    f.write("\n".join(grouped[g]) + "\n\n")
-            print(f"\n✅ 成功写入文件，总计频道数：{total}")
+                    for cn, urls in sorted(grouped[g], key=lambda it: _order(g, it)):
+                        for url in urls:
+                            f.write(f"{cn},{url}\n")
+                    f.write("\n")
+            print(f"\n✅ 成功写入文件，总计线路数：{total}")
             print(f"文件路径：{os.path.abspath('y.png')}")
             print(f"文件大小：{os.path.getsize('y.png') / 1024:.2f} KB")
         except Exception as e:
@@ -194,22 +192,14 @@ class IPTVUpdater:
         print("\n" + "="*40)
         print(" IPTV列表更新程序启动 ".center(40, "★"))
         print("="*40)
-        
-        # 步骤1：获取源
         print("\n步骤1/4：获取源数据")
         api_urls = self._fetch_sources()
         print(f"找到有效API端点：{len(api_urls)}个")
-        
-        # 步骤2：处理API
         print("\n步骤2/4：处理API端点")
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             executor.map(self._process_api, api_urls)
-        
-        # 步骤3：保存结果
         print("\n步骤3/4：整理频道数据")
         self._save_channels()
-        
-        # 最终状态报告
         print("\n步骤4/4：完成更新")
         print(f"{'='*40}\n{' 更新完成 '.center(40, '☆')}\n{'='*40}")
 
@@ -222,7 +212,10 @@ _CN_CCTV = {'综合': 'CCTV-1', '财经': 'CCTV-2', '综艺': 'CCTV-3', '中文�
             '体育赛事': 'CCTV-5+', '体育': 'CCTV-5', '电影': 'CCTV-6', '国防军事': 'CCTV-7',
             '电视剧': 'CCTV-8', '纪录': 'CCTV-9', '科教': 'CCTV-10', '戏曲': 'CCTV-11',
             '社会与法': 'CCTV-12', '新闻': 'CCTV-13', '少儿': 'CCTV-14', '音乐': 'CCTV-15'}
-_SUFFIX_JUNK = re.compile(r'(高清|标清|超清|蓝光|杜比|4K|8K|UHD|HD|SD|频道|电视台|台)$')
+_CN_NUM = {'一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6, '七': 7, '八': 8,
+           '九': 9, '十': 10, '十一': 11, '十二': 12, '十三': 13, '十四': 14,
+           '十五': 15, '十六': 16, '十七': 17}
+_SUFFIX_JUNK = re.compile(r'(高清|标清|超清|蓝光|杜比|4K|8K|UHD|HD|SD|频道|电视台|台|移动|联通|电信)$')
 
 def clean_name(raw):
     n = (raw or '').translate(_FW).strip()
@@ -234,10 +227,13 @@ def clean_name(raw):
         n = re.sub(r'\s+', ' ', n)
     if re.search(r'CCTV[\-\s]?(4K|8K)', n, re.I):
         return 'CCTV-' + re.search(r'CCTV[\-\s]?(4K|8K)', n, re.I).group(1).upper()
-    if n.startswith('中央'):
+    if n.startswith('中央') or n.startswith('央视'):
         for k in sorted(_CN_CCTV, key=len, reverse=True):
             if k in n:
                 return _CN_CCTV[k]
+    m = re.search(r'(?:中央(?:电视台)?|央视)([一二三四五六七八九十]{1,3})套', n)
+    if m and m.group(1) in _CN_NUM:
+        return 'CCTV-%d' % _CN_NUM[m.group(1)]
     m = re.search(r'(?:CCTV|中央(?:电视台)?)[\-\s]?(\d{1,2})(\+)?', n, re.I)
     if m:
         return 'CCTV-%s%s' % (m.group(1), m.group(2) or '')
@@ -318,7 +314,3 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"\n⛔ 程序异常终止: {str(e)}")
         exit(1)
-
-
-
-
